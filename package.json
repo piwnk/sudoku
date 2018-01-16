@@ -92,10 +92,20 @@
       "transform-decorators-legacy"
     ],
     "presets": [
-      "react-app"
+      "react-app",
+      "es2017"
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "env": {
+      "browser": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "react/prefer-stateless-function": 1,
+      "no-unused-vars": 1,
+      "no-underscore-dangle": 0
+    }
   }
 }

@@ -8,15 +8,20 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  test 
+  test,
 });
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class extends Component {
+
+class Board extends Component {
   state = {
-    a: 'asdf'
+
   }
-  render = () => (
-    <h1>Hello world</h1>
-  )
+
+  render() {
+    return (
+      <div className="section" />
+    );
+  }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps);
