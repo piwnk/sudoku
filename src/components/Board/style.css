@@ -1,0 +1,6 @@
+.board {
+  display: grid;
+  grid-template: repeat(9, 1fr)/repeat(9, 1fr);
+  justify-self: center;
+}
+/*# sourceMappingURL=style.css.map */

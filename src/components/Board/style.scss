@@ -1,0 +1,7 @@
+.board {
+  display: grid;
+  grid-template: repeat(9, 1fr) / repeat(9, 1fr);
+  // grid-gap: 20px;
+  justify-self: center;
+  // border: 1px solid black;
+}

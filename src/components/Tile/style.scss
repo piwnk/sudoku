@@ -1,0 +1,20 @@
+$thick-border: 2px solid black;
+$thin-border: 1px solid black;
+
+.tile {
+  border-left: $thin-border;
+  border-top: $thin-border;
+  // border-radius: 50%;
+  // background-color: black;
+  // color: white;
+  color: rgb(0, 140, 255);
+  height: 40px;
+  width: 40px;
+  &.initial {
+    color: black;
+  }
+  &.right-border,
+  &.left-border{
+    border-right: $thick-border;
+  }
+}

@@ -5934,6 +5934,10 @@ style-loader@0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+sudoku-umd@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sudoku-umd/-/sudoku-umd-1.0.1.tgz#881f6fb67029bc1ec5f66d0f6bd5e1dd379c0cc4"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"

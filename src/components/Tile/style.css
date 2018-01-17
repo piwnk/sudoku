@@ -1,0 +1,16 @@
+.tile {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  color: #008cff;
+  height: 40px;
+  width: 40px;
+}
+
+.tile.initial {
+  color: black;
+}
+
+.tile.right-border, .tile.left-border {
+  border-right: 2px solid black;
+}
+/*# sourceMappingURL=style.css.map */

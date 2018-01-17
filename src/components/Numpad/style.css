@@ -1,0 +1,21 @@
+.numpad {
+  display: grid;
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  grid-gap: 10px;
+  border: 1px solid coral;
+  padding: 10px;
+}
+
+.numpad .digit {
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: coral;
+  color: white;
+}
+
+.numpad .digit.active {
+  background-color: red;
+}
+/*# sourceMappingURL=style.css.map */
