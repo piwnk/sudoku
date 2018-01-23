@@ -30,7 +30,7 @@ const initialState = {
   solved: [],
   startTime: new Date(),
   undoStack: [],
-  // redoStack: [],
+  redoStack: [],
 };
 
 export default (state = initialState, action) => {
@@ -68,16 +68,21 @@ export default (state = initialState, action) => {
         ...state,
         current: updatedBoard,
         undoStack: [...state.undoStack, updatedBoard],
-        // redoStack: [],
+        redoStack: [],
       };
 
     case UNDO:
-      // const current = state.current;
+      const { current } = state;
+      // const poppedBoard = state.undoStack.slice(-1);
+      const undoRemainder = state.undoStack.length ? state.undoStack.slice(0, -1) : [];
+      const previousBoard = undoRemainder.length ? undoRemainder.slice(-1)[0] : state.initial;
+      // debugger;
       return {
         ...state,
-        undoStack: state.undoStack.length ? state.undoStack.slice(0, -1) : [],
-        redoStack: [...state.redoStack, state.current],
-        current: state.undoStack.length ? state.undoStack.slice(-1) : state.initial,
+        undoStack: undoRemainder,
+        redoStack: [...state.redoStack, current],
+        current: previousBoard,
+        // current: state.undoStack.length ? console.log(state.undoStack.length) : console.log('no length'),
       };
 
     default:
