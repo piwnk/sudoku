@@ -1,22 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import Numpad from '../Numpad';
 
 import './style.css';
 
-export default ({ id, value, initial }) => {
-  // const idStr = id.toString();
-  // const idPadded = idStr.length === 1 ? idStr.padStart(1, '0') : idStr;
-  const idStr = id < 10 ? `0${id}` : id.toString();
-  const row = Number(idStr[0]);
-  console.log(idStr);
-  return (
-    <div
-      className={`
-        tile
-        ${initial ? ' initial' : ''}
-        ${(id + 1) % 3 ? '' : ' right-border'}
-      `}
-    >
-      {value !== '.' ? value : ''}
-    </div>
-  );
-};
+export default class extends Component {
+  state = {
+    showNumpad: false,
+  }
+
+  numpadOff = () => this.setState({
+    showNumpad: false,
+  });
+
+  numpadOn = () => this.setState({
+    showNumpad: true,
+  });
+
+  toggleNumpad = () => this.setState(current => ({
+    showNumpad: !current.showNumpad,
+  }));
+
+  pickNumber = (number) => {
+    this.props.setValue(this.props.id, number);
+    console.log(`Tile: ${this.props.id}, ${number}`);
+    this.numpadOff();
+  }
+
+  renderNumpad = (
+    <Numpad
+      handleMouseClick={this.pickNumber}
+      handleMouseLeave={this.numpadOff}
+    />
+  )
+
+  render() {
+    const {
+      id, value, initial, correct,
+    } = this.props;
+    const [row, column] = id.toString();
+    // console.log(this.state.showNumpad, initial, value);
+    return (
+      <div
+        className={
+          `tile
+          ${initial ? ' initial' : ''}
+          ${column % 3 ? '' : ' border-right'}
+          ${row % 3 ? '' : ' border-bottom'}`
+        }
+        onClick={this.numpadOn}
+      >
+        {value}
+        {!initial && this.state.showNumpad ? this.renderNumpad : console.log('off')}
+      </div>
+    );
+  }
+}

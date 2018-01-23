@@ -1,16 +1,36 @@
 .tile {
-  border-left: 1px solid black;
-  border-top: 1px solid black;
-  color: #008cff;
+  border: 1px solid #008cff;
+  color: black;
   height: 40px;
   width: 40px;
+  position: relative;
 }
 
 .tile.initial {
-  color: black;
+  color: #008cff;
 }
 
-.tile.right-border, .tile.left-border {
-  border-right: 2px solid black;
+.tile.incorrect {
+  color: red;
+}
+
+.tile.border-left {
+  border-left: 2px solid #008cff;
+}
+
+.tile.border-right {
+  border-right: 2px solid #008cff;
+}
+
+.tile.border-top {
+  border-top: 2px solid #008cff;
+}
+
+.tile.border-bottom {
+  border-bottom: 2px solid #008cff;
+}
+
+.tile:hover {
+  background: rgba(0, 140, 255, 0.3);
 }
 /*# sourceMappingURL=style.css.map */

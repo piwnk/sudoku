@@ -1,5 +1,6 @@
 header {
   background-color: #008cff;
+  border-radius: 10px;
   display: flex;
   color: white;
   width: 90vw;

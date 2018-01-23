@@ -104,6 +104,7 @@
     },
     "parser": "babel-eslint",
     "rules": {
+      "max-len": 1,
       "no-unused-vars": 1,
       "no-underscore-dangle": 0,
       "no-case-declarations": 0,
@@ -111,6 +112,7 @@
       "react/prefer-stateless-function": 1,
       "react/prop-types": 0,
       "react/no-array-index-key": 0,
+      "react/no-unused-state": 1,
       "jsx-a11y/click-events-have-key-events": 0,
       "jsx-a11y/no-static-element-interactions": 0
     }

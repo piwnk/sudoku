@@ -1,7 +1,22 @@
+$blue: rgb(0, 140, 255);
+$thick-border: 2px solid $blue;
+
 .board {
   display: grid;
+  position: relative;
   grid-template: repeat(9, 1fr) / repeat(9, 1fr);
   // grid-gap: 20px;
   justify-self: center;
-  // border: 1px solid black;
+  border: 2px solid rgb(0, 140, 255);
+  // background: rgb(0, 140, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  .solved {
+    position: absolute;
+    background: white;
+    border: $thick-border;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

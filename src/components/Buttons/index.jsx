@@ -5,12 +5,19 @@ import {
   createBoard,
   solveBoard,
   resetBoard,
+  undo,
+  // redo,
+  // checkBoard,
 } from '../Board/actions';
+
+import './style.css';
 
 const mapDispatchToProps = {
   createBoard,
   solveBoard,
   resetBoard,
+  undo,
+  // redo,
 };
 
 
@@ -23,7 +30,7 @@ const Button = ({ text, handleClick }) => (
 
 
 const Buttons = props => (
-  <footer>
+  <div>
     <div className="buttons">
       <Button
         text="create"
@@ -37,8 +44,20 @@ const Buttons = props => (
         text="reset"
         handleClick={props.resetBoard}
       />
+      <Button
+        text="check"
+        handleClick={props.checkBoard}
+      />
+      <Button
+        text="undo"
+        handleClick={props.undo}
+      />
+      <Button
+        text="redo"
+        handleClick={props.redo}
+      />
     </div>
-  </footer>
+  </div>
 );
 
 export default connect(undefined, mapDispatchToProps)(Buttons);

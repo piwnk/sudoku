@@ -1,23 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './style.css';
 
 const digits = [...Array(9).keys()].map(i => i + 1);
+digits.push('');
 
-const Numpad = ({ currentValue, pickNumber }) => (
-  <div className="numpad">
+export default ({ handleMouseClick, handleMouseLeave }) => (
+  <div
+    className="numpad"
+    onMouseLeave={handleMouseLeave}
+  >
     {digits.map(digit => (
       <div
+        className="digit"
         key={digit}
-        className={`digit${currentValue === digit ? ' active' : ''}`}
-        onClick={(e => pickNumber(e.target.text))}
+        onClick={(e => handleMouseClick(e.target.innerText))}
       >
-        {/* <p> */}
         {digit}
-        {/* </p> */}
       </div>
     ))}
+    <div
+      className="digit central"
+      onClick={(e => handleMouseClick(e.target.innerText))}
+    />
   </div>
 );
-
-export default Numpad;

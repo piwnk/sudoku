@@ -1,6 +1,19 @@
 .board {
   display: grid;
+  position: relative;
   grid-template: repeat(9, 1fr)/repeat(9, 1fr);
   justify-self: center;
+  border: 2px solid #008cff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.board .solved {
+  position: absolute;
+  background: white;
+  border: 2px solid #008cff;
+  border-radius: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=style.css.map */

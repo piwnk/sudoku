@@ -1,21 +1,76 @@
 .numpad {
-  display: grid;
-  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
-  grid-gap: 10px;
-  border: 1px solid coral;
-  padding: 10px;
+  position: relative;
+  width: 11em;
+  height: 11em;
+  padding: 20px;
+  border-radius: 50%;
+  list-style: none;
+  position: absolute;
+  background: rgba(204, 204, 204, 0.6);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.numpad > * {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  margin: -1.25em;
+}
+
+.numpad > *:nth-of-type(1) {
+  transform: rotate(270deg) translate(4em) rotate(-270deg);
+}
+
+.numpad > *:nth-of-type(2) {
+  transform: rotate(310deg) translate(4em) rotate(-310deg);
+}
+
+.numpad > *:nth-of-type(3) {
+  transform: rotate(350deg) translate(4em) rotate(-350deg);
+}
+
+.numpad > *:nth-of-type(4) {
+  transform: rotate(390deg) translate(4em) rotate(-390deg);
+}
+
+.numpad > *:nth-of-type(5) {
+  transform: rotate(430deg) translate(4em) rotate(-430deg);
+}
+
+.numpad > *:nth-of-type(6) {
+  transform: rotate(470deg) translate(4em) rotate(-470deg);
+}
+
+.numpad > *:nth-of-type(7) {
+  transform: rotate(510deg) translate(4em) rotate(-510deg);
+}
+
+.numpad > *:nth-of-type(8) {
+  transform: rotate(550deg) translate(4em) rotate(-550deg);
+}
+
+.numpad > *:nth-of-type(9) {
+  transform: rotate(590deg) translate(4em) rotate(-590deg);
 }
 
 .numpad .digit {
-  height: 40px;
-  width: 40px;
-  border: none;
+  display: flex;
+  align-items: center;
   border-radius: 50%;
-  background-color: coral;
+  background-color: #008cff;
   color: white;
+  z-index: 2;
 }
 
-.numpad .digit.active {
+.numpad .digit:hover {
+  background-color: #0063b4;
+}
+
+.numpad .digit:active {
   background-color: red;
 }
 /*# sourceMappingURL=style.css.map */

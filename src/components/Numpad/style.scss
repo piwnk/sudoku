@@ -1,24 +1,64 @@
-$tile-width: 40px;
-$gap: 10px;
-$size: 2*$gap + 3*$tile-width;
+$blue: rgb(0, 140, 255);
+$darkblue: rgb(0, 99, 180);
+$grey: rgba(204, 204, 204, .6);
+$tile-width: 35px;
+
+
+@mixin on-circle($item-count, $circle-size, $item-size) {
+  position: relative;
+  width:  $circle-size + 3em;
+  height: $circle-size + 3em;
+  padding: 20px;
+  border-radius: 50%; 
+  list-style: none;       
+  
+  > * {
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    width:  $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+  
+    $angle: (360 / $item-count);
+    $rot: 270;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: 
+          rotate($rot * 1deg) 
+          translate($circle-size / 2) 
+          rotate($rot * -1deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}
 
 .numpad {
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  grid-gap: $gap;
-  // width: $size;
-  // height: $size;
-  border: 1px solid coral;
-  padding: 10px;
+  @include on-circle($item-count: 9, $circle-size: 8em, $item-size: 2.5em);
+  position: absolute;
+  // display: grid;
+  // grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  background: $grey;
+  border-radius: 50%;
+  // padding: 1px;
+  z-index: 2;
   .digit {
-    height: $tile-width;
-    width: $tile-width;
-    // line-height: $tile-width;
-    border: none;
+    display: flex;
+    align-items: center;
+    // height: $tile-width;
+    // width: $tile-width;
     border-radius: 50%;
-    background-color: coral;
+    background-color: $blue;
     color: white;
-    &.active {
+    z-index: 2;
+    &:hover {
+      background-color: $darkblue;
+    }
+    &:active {
       background-color: red;
     }
   }

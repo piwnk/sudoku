@@ -1,20 +1,32 @@
-$thick-border: 2px solid black;
-$thin-border: 1px solid black;
-
+$blue: rgb(0, 140, 255);
+$thick-border: 2px solid $blue;
+$thin-border: 1px solid $blue;
 .tile {
-  border-left: $thin-border;
-  border-top: $thin-border;
-  // border-radius: 50%;
-  // background-color: black;
-  // color: white;
-  color: rgb(0, 140, 255);
+  border: $thin-border;
+  // border-top: $thin-border;
+  color: black;
   height: 40px;
   width: 40px;
+  position: relative;
   &.initial {
-    color: black;
+    color: $blue;
   }
-  &.right-border,
-  &.left-border{
+  &.incorrect {
+    color: red;
+  }
+  &.border-left {
+    border-left: $thick-border;
+  }
+  &.border-right {
     border-right: $thick-border;
+  }
+  &.border-top {
+    border-top: $thick-border;
+  }
+  &.border-bottom {
+    border-bottom: $thick-border;
+  }
+  &:hover {
+    background: rgba(0, 140, 255, .3);
   }
 }

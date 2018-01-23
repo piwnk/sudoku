@@ -24,7 +24,7 @@ body * {
 #app {
   height: 100vh;
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 100px 1fr 100px;
   padding: 10px;
   /* align-items: space-between; */
   /* justify-content: space-between; */
