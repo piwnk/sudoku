@@ -17,7 +17,7 @@ const Button = ({ text, handleClick, disabled }) => (
   <button
     className={disabled ? 'disabled' : ''}
     onClick={handleClick}
-  >{text.toUpperCase()}
+  >{typeof text === 'string' ? text.toUpperCase() : text}
   </button>
 );
 
@@ -42,12 +42,12 @@ const Buttons = props => (
         handleClick={props.checkBoard}
       />
       <Button
-        text="undo"
+        text={<i className="fa fa-undo" />}
         handleClick={props.undo}
         disabled={!props.undoStack.length}
       />
       <Button
-        text="redo"
+        text={<i className="fa fa-repeat" />}
         handleClick={props.redo}
         disabled={!props.redoStack.length}
       />
