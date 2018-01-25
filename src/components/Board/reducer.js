@@ -67,22 +67,30 @@ export default (state = initialState, action) => {
       return {
         ...state,
         current: updatedBoard,
-        undoStack: [...state.undoStack, updatedBoard],
+        undoStack: [...state.undoStack, state.current],
         redoStack: [],
       };
 
     case UNDO:
-      const { current } = state;
-      // const poppedBoard = state.undoStack.slice(-1);
       const undoRemainder = state.undoStack.length ? state.undoStack.slice(0, -1) : [];
-      const previousBoard = undoRemainder.length ? undoRemainder.slice(-1)[0] : state.initial;
-      // debugger;
-      return {
+      const redoExtended = [state.current, ...state.redoStack];
+      const previous = state.undoStack.length ? state.undoStack.slice(-1)[0] : undefined;
+      return !previous ? state : {
         ...state,
         undoStack: undoRemainder,
-        redoStack: [...state.redoStack, current],
-        current: previousBoard,
-        // current: state.undoStack.length ? console.log(state.undoStack.length) : console.log('no length'),
+        redoStack: redoExtended,
+        current: previous,
+      };
+
+    case REDO:
+      const redoRemainder = state.redoStack.length ? state.redoStack.slice(1) : [];
+      const undoExtended = [...state.undoStack.slice, state.current];
+      const next = state.redoStack.length ? state.redoStack[0] : undefined;
+      return !next ? state : {
+        ...state,
+        undoStack: undoExtended,
+        redoStack: redoRemainder,
+        current: next,
       };
 
     default:

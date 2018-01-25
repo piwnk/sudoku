@@ -36,7 +36,7 @@ export default class extends Component {
 
   render() {
     const {
-      id, value, initial, correct,
+      id, value, initial,
     } = this.props;
     const [row, column] = id.toString();
     // console.log(this.state.showNumpad, initial, value);
@@ -51,7 +51,7 @@ export default class extends Component {
         onClick={this.numpadOn}
       >
         {value}
-        {!initial && this.state.showNumpad ? this.renderNumpad : console.log('off')}
+        {!initial && this.state.showNumpad ? this.renderNumpad : ''}
       </div>
     );
   }

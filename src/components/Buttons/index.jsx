@@ -6,23 +6,16 @@ import {
   solveBoard,
   resetBoard,
   undo,
-  // redo,
+  redo,
   // checkBoard,
 } from '../Board/actions';
 
 import './style.css';
 
-const mapDispatchToProps = {
-  createBoard,
-  solveBoard,
-  resetBoard,
-  undo,
-  // redo,
-};
 
-
-const Button = ({ text, handleClick }) => (
+const Button = ({ text, handleClick, disabled }) => (
   <button
+    className={disabled ? 'disabled' : ''}
     onClick={handleClick}
   >{text.toUpperCase()}
   </button>
@@ -51,13 +44,28 @@ const Buttons = props => (
       <Button
         text="undo"
         handleClick={props.undo}
+        disabled={!props.undoStack.length}
       />
       <Button
         text="redo"
         handleClick={props.redo}
+        disabled={!props.redoStack.length}
       />
     </div>
   </div>
 );
 
-export default connect(undefined, mapDispatchToProps)(Buttons);
+const mapStateToProps = state => ({
+  undoStack: state.Board.undoStack,
+  redoStack: state.Board.redoStack,
+});
+
+const mapDispatchToProps = {
+  createBoard,
+  solveBoard,
+  resetBoard,
+  undo,
+  redo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
