@@ -1,3 +1,9 @@
+import sudoku from 'sudoku-umd';
+
+import {
+  convertBoardToObject,
+  convertBoardToString,
+} from './utils';
 
 export const CREATE_BOARD = 'CREATE_BOARD';
 export const SOLVE_BOARD = 'SOLVE_BOARD';
@@ -7,10 +13,17 @@ export const UNDO = 'UNDO';
 export const REDO = 'REDO';
 
 
-export const createBoard = difficulty => ({
-  type: CREATE_BOARD,
-  difficulty,
-});
+export const createBoard = (difficulty) => {
+  const newBoardAsString = sudoku.generate(difficulty);
+  const solvedBoardAsString = sudoku.solve(newBoardAsString);
+  return {
+    type: CREATE_BOARD,
+    difficulty,
+    newBoard: convertBoardToObject(newBoardAsString),
+    solvedBoard: convertBoardToObject(solvedBoardAsString),
+    startTime: new Date(),
+  };
+};
 
 export const solveBoard = () => ({
   type: SOLVE_BOARD,

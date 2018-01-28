@@ -1,5 +1,3 @@
-import sudoku from 'sudoku-umd';
-
 import {
   CREATE_BOARD,
   SOLVE_BOARD,
@@ -9,26 +7,12 @@ import {
   REDO,
 } from './actions';
 
-const range = [...Array(100).keys()];
-
-const boardIds = range.filter(i => (i > 10 && i % 10 !== 0));
-
-export const convertBoardToObject = board =>
-  board.split('').map((value, i) => ({
-    id: boardIds[i],
-    value: value === '.' ? '' : value,
-  }));
-
-export const convertBoardToString = board =>
-  board.map(item => (
-    item.value.length > 0 ? item.value : '.')).join('');
-
 
 const initialState = {
   initial: [],
   current: [],
   solved: [],
-  startTime: new Date(),
+  startTime: undefined,
   undoStack: [],
   redoStack: [],
 };
@@ -36,16 +20,18 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case CREATE_BOARD:
-      const newBoard = sudoku.generate(action.difficulty);
-      const solvedBoard = sudoku.solve(newBoard);
-      const newBoardAsObject = convertBoardToObject(newBoard);
-      const solvedBoardAsObject = convertBoardToObject(solvedBoard);
+      const {
+        newBoard,
+        solvedBoard,
+        startTime,
+      } = action;
+
       return {
         ...state,
-        current: newBoardAsObject,
-        initial: newBoardAsObject,
-        solved: solvedBoardAsObject,
-        startTime: new Date(),
+        current: newBoard,
+        initial: newBoard,
+        solved: solvedBoard,
+        startTime,
       };
     case SOLVE_BOARD:
       // const currentBoardAsString = convertBoardToString(state.board);
